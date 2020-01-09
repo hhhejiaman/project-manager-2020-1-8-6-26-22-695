@@ -1,0 +1,71 @@
+body {
+    padding: 20px 20px;
+    font-family: serif, 'Microsoft YaHei';
+}
+
+.general-task {
+    display: flex;
+    justify-content: space-between;
+    color: #ffffff;
+}
+
+.common-part {
+    margin-right: 20px;
+    flex-grow: 1;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.all-tasks {
+    background-color: #31b48d;
+}
+
+.unsolved-tasks {
+    background-color: #38a1f2;
+}
+
+.processing-tasks {
+    background-color: #7538c7;
+}
+
+.resolved-tasks {
+    background-color: #3b67a4;
+}
+
+.describe {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.describe p {
+    display: block;
+    margin: 0;
+}
+
+.describe-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.real-time {
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.progress-detail {
+    display: flex;
+    justify-content: space-between;
+}
+
+.progress-amount {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 30px;
+    margin: 0;
+}

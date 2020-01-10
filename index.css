@@ -4,13 +4,14 @@ body {
 }
 
 .general-task {
+    position: relative;
     display: flex;
     justify-content: space-between;
     color: #ffffff;
 }
 
 .common-part {
-    margin-right: 20px;
+    position: relative;
     flex-grow: 1;
     border-radius: 5px;
     padding: 20px;
@@ -22,6 +23,7 @@ body {
 
 .unsolved-tasks {
     background-color: #38a1f2;
+    margin: 0 20px 0 20px;
 }
 
 .processing-tasks {
@@ -30,10 +32,10 @@ body {
 
 .resolved-tasks {
     background-color: #3b67a4;
+    margin-left: 20px;
 }
 
 .describe {
-    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -63,9 +65,25 @@ body {
     justify-content: space-between;
 }
 
+.progress-detail:after {
+    float: right;
+    content: ""\e60c"";
+    width: 10px;
+    height: 10px;
+    background-color: #38a1f2;
+}
+
 .progress-amount {
     font-size: 32px;
     font-weight: bold;
     line-height: 30px;
     margin: 0;
+}
+
+.iconfont {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 100px;
+    opacity: 0.3;
 }

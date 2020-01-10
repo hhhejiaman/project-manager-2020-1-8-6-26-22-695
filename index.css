@@ -114,11 +114,7 @@ tbody td {
 }
 
 tbody td:nth-child(1) {
-    width: 24%;
-}
-
-tbody td:nth-child(2) {
-    width: 50%;
+    width: 20%;
 }
 
 tbody td:nth-child(3) {
@@ -127,5 +123,28 @@ tbody td:nth-child(3) {
 
 tbody td:nth-child(4),
 tbody td:nth-child(5) {
-    width: 8%
+    width: 10%
+}
+
+.delete-btn {
+    width: 50px;
+    font-size: 13px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 8px 3px 8px 3px;
+    background-color: #ee706d;
+    color: white;
+}
+
+.item-description {
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.item-description:hover {
+    display: block;
 }

@@ -6,18 +6,18 @@ function updataList(event) {
     for (i = 0; i < event.length; i++) {
         html += "<tr>";
         html += `<td>${event[i].name}</td>`;
-        html += `<td>${event[i].description}</td>`;
+        html += `<td class="item-description"><div>${event[i].description}</div></td>`;
         html += `<td>${event[i].endTime}</td>`;
         html += `<td class="item-status">${event[i].status}</td>`;
-        html += "<td><div>删除</div></td>";
+        html += "<td><div class='delete-btn'>删除</div></td>";
         html += "</tr>";
     }
     listBody.innerHTML = html;
 }
 
-function colorCheck(event) {
-    var itemStatus = document.getElementsByClassName("item-status");
+var itemStatus = document.getElementsByClassName("item-status");
 
+function colorCheck(event) {
     for (i = 0; i < event.length; i++) {
         switch (itemStatus[i].innerHTML) {
             case 'ACTIVE':
@@ -33,6 +33,7 @@ function colorCheck(event) {
     }
 }
 
+
 function getItemData() {
     var getAPIData = {
         url: apiUrl,
@@ -40,6 +41,8 @@ function getItemData() {
         success: function(res) {
             updataList(res);
             colorCheck(res);
+            hiddenCheck(res);
+            hoverEvent();
         },
         fail: function(error) {
             console.log('error occurred')

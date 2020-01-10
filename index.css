@@ -104,3 +104,24 @@ thead th {
     height: 45px;
     padding-left: 15px;
 }
+
+tbody tr {
+    border-bottom: 1px solid #DCDEE3;
+}
+
+tbody td:nth-child(1) {
+    width: 24%;
+}
+
+tbody td:nth-child(2) {
+    width: 50%;
+}
+
+tbody td:nth-child(3) {
+    width: 10%;
+}
+
+tbody td:nth-child(4),
+tbody td:nth-child(5) {
+    width: 8%
+}

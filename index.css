@@ -87,3 +87,20 @@ body {
     font-size: 100px;
     opacity: 0.3;
 }
+
+table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #EBECF0;
+    color: #333;
+    border-bottom: 1px solid #DCDEE3;
+}
+
+thead th {
+    height: 45px;
+    padding-left: 15px;
+}

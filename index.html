@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Phase testing</title>
-    <link href="index.css" rel="stylesheet">
+    <link href="./styles/index.css" rel="stylesheet">
     <link href="./iconfont/iconfont.css" rel="stylesheet">
 </head>
 
@@ -72,20 +72,20 @@
     </table>
     <div id="mask">
         <div class="delete-window">
-            <div class="icon-all icon-guanbi"></div>
+            <div class="icon-all icon-guanbi" onclick="cancelBtn()"></div>
             <div class="icon-all icon-wenhao"></div>
             <div class="delete-text">
                 <p id="tips">提示</p>
                 <p id="confirm">确认删除该项目吗</p>
             </div>
             <div class="btns">
-                <div class="btns-common" id="yes">确认</div>
-                <div class="btns-common" id="no">取消</div>
+                <div class="btns-common" onclick="confirmBtn()" id="yes">确认</div>
+                <div class="btns-common" onclick="cancelBtn()" id="no">取消</div>
             </div>
         </div>
     </div>
 </body>
 
-<script src="index.js"></script>
+<script src="./script/index.js"></script>
 
 </html>

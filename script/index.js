@@ -63,6 +63,15 @@ var maskBox = document.getElementById("mask");
 
 function deleteEvent() {
     maskBox.style.display = "block";
+
+}
+
+function cancelBtn() {
+    maskBox.style.display = "none";
+}
+
+function confirmBtn(event) {
+    //alert();
 }
 
 
@@ -73,6 +82,7 @@ function getItemData() {
         success: function(res) {
             updataList(res);
             colorCheck(res);
+            confirmBtn(res);
         },
         fail: function(error) {
             console.log('error occurred')

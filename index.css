@@ -109,6 +109,10 @@ tbody tr {
     border-bottom: 1px solid #DCDEE3;
 }
 
+tbody td {
+    padding-left: 15px;
+}
+
 tbody td:nth-child(1) {
     width: 24%;
 }

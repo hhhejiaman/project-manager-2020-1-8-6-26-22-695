@@ -2,6 +2,32 @@ var apiUrl = 'http://localhost:3000/projects';
 var listBody = document.getElementById('list-body');
 var html = "";
 
+function ajaxConnect(options) {
+    var optionsInstall = {
+        url: options.url || "",
+        method: options.method.toLocaleUpperCase() || "GET",
+        headers: options.headers || {},
+        data: options.data || null,
+        success: options.success || function(result) {},
+        fail: options.fail || function(error) {}
+    }
+    var xhr = new XMLHttpRequest();
+    xhr.open(optionsInstall.method, optionsInstall.url, true);
+    if ((optionsInstall.method === 'POST') || (optionsInstall.method === 'PUT')) {
+        xhr.setRequestHeader('content-type', 'application/json');
+        optionsInstall.data = JSON.stringify(optionsInstall.data);
+    }
+    xhr.send(optionsInstall.data);
+
+    xhr.onload = function() {
+        optionsInstall.success(JSON.parse(xhr.responseText));
+    }
+
+    xhr.onerror = function() {
+        optionsInstall.fail(xhr.status);
+    }
+}
+
 function updataList(event) {
     for (i = 0; i < event.length; i++) {
         html += "<tr>";
@@ -9,7 +35,7 @@ function updataList(event) {
         html += `<td class="item-description"><div>${event[i].description}</div></td>`;
         html += `<td>${event[i].endTime}</td>`;
         html += `<td class="item-status">${event[i].status}</td>`;
-        html += "<td><div class='delete-btn'>删除</div></td>";
+        html += "<td><div class='delete-btn' onclick='deleteEvent()'>删除</div></td>";
         html += "</tr>";
     }
     listBody.innerHTML = html;
@@ -33,6 +59,12 @@ function colorCheck(event) {
     }
 }
 
+var maskBox = document.getElementById("mask");
+
+function deleteEvent() {
+    maskBox.style.display = "block";
+}
+
 
 function getItemData() {
     var getAPIData = {
@@ -41,8 +73,6 @@ function getItemData() {
         success: function(res) {
             updataList(res);
             colorCheck(res);
-            hiddenCheck(res);
-            hoverEvent();
         },
         fail: function(error) {
             console.log('error occurred')

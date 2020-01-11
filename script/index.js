@@ -76,7 +76,6 @@ var deleteBtn = document.getElementsByClassName("delete-btn");
 var itemId = document.getElementsByClassName("item-id");
 
 function confirmsBtn(event) {
-    console.log(itemId[0].innerHTML)
     for (i = 0; i < event.length; i++) {
         var deleteBtnNow = deleteBtn[i];
         deleteBtnNow.addEventListener("click", function(e) {
@@ -90,6 +89,7 @@ function confirmsBtn(event) {
                     success: function(res) {
                         listBody.removeChild(targetBtn.parentNode.parentNode);
                         cancelBtn();
+                        amountCaculator();
                     },
                     fail: function(error) {
                         console.log('ERROR');
@@ -101,6 +101,13 @@ function confirmsBtn(event) {
     }
 }
 
+var allAmount = document.getElementById("all-amount");
+var list = document.getElementById("list");
+console.log(allAmount.innerHTML);
+
+function amountCaculator() {
+    allAmount.innerHTML = list.rows.length;
+}
 
 function getItemData() {
     var getAPIData = {
@@ -110,6 +117,7 @@ function getItemData() {
             updataList(res);
             colorCheck(res);
             confirmsBtn(res);
+            amountCaculator();
         },
         fail: function(error) {
             console.log('error occurred')

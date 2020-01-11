@@ -89,7 +89,7 @@ function confirmsBtn(event) {
                     success: function(res) {
                         listBody.removeChild(targetBtn.parentNode.parentNode);
                         cancelBtn();
-                        amountCaculator();
+                        amountCaculator(res);
                     },
                     fail: function(error) {
                         console.log('ERROR');
@@ -103,10 +103,32 @@ function confirmsBtn(event) {
 
 var allAmount = document.getElementById("all-amount");
 var list = document.getElementById("list");
-console.log(allAmount.innerHTML);
+var resolvedAmount = document.getElementById("resolved-amount");
+var pendingAmount = document.getElementById("pending-amount");
+var closedAmount = document.getElementById("closed-amount");
 
-function amountCaculator() {
+function amountCaculator(event) {
+    var resolvedchushi = 0;
+    var pendingchushi = 0;
+    var closedchushi = 0;
     allAmount.innerHTML = list.rows.length;
+    for (i = 0; i < event.length; i++) {
+        switch (event[i].status) {
+            case 'ACTIVE':
+                resolvedchushi++;
+                break;
+            case 'PENDING':
+                pendingchushi++;
+                break;
+            case 'CLOSED':
+                closedchushi++;
+                break;
+        }
+    }
+    resolvedAmount.innerHTML = resolvedchushi;
+    pendingAmount.innerHTML = pendingchushi;
+    closedAmount.innerHTML = closedchushi;
+
 }
 
 function getItemData() {
@@ -117,7 +139,7 @@ function getItemData() {
             updataList(res);
             colorCheck(res);
             confirmsBtn(res);
-            amountCaculator();
+            amountCaculator(res);
         },
         fail: function(error) {
             console.log('error occurred')

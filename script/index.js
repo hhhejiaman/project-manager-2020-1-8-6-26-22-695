@@ -80,6 +80,7 @@ function confirmsBtn(event) {
             var targetBtn = e.target;
             yesBtn.addEventListener("click", function() {
                 listBody.removeChild(targetBtn.parentNode.parentNode);
+                cancelBtn();
             });
         });
     }

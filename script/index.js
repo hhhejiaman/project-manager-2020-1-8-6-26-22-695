@@ -31,6 +31,7 @@ function ajaxConnect(options) {
 function updataList(event) {
     for (i = 0; i < event.length; i++) {
         html += "<tr>";
+        html += `<td class="item-id">${event[i].id}</td>`;
         html += `<td>${event[i].name}</td>`;
         html += `<td class="item-description"><div>${event[i].description}</div></td>`;
         html += `<td>${event[i].endTime}</td>`;
@@ -72,15 +73,29 @@ function cancelBtn() {
 
 var yesBtn = document.getElementById("yes");
 var deleteBtn = document.getElementsByClassName("delete-btn");
+var itemId = document.getElementsByClassName("item-id");
 
 function confirmsBtn(event) {
+    console.log(itemId[0].innerHTML)
     for (i = 0; i < event.length; i++) {
         var deleteBtnNow = deleteBtn[i];
         deleteBtnNow.addEventListener("click", function(e) {
             var targetBtn = e.target;
+            var targetID = targetBtn.parentNode.parentNode.firstElementChild.innerHTML;
             yesBtn.addEventListener("click", function() {
-                listBody.removeChild(targetBtn.parentNode.parentNode);
-                cancelBtn();
+
+                var options = {
+                    url: apiUrl + "/" + targetID,
+                    method: "DELETE",
+                    success: function(res) {
+                        listBody.removeChild(targetBtn.parentNode.parentNode);
+                        cancelBtn();
+                    },
+                    fail: function(error) {
+                        console.log('ERROR');
+                    }
+                }
+                ajaxConnect(options);
             });
         });
     }

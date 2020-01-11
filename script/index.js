@@ -70,8 +70,19 @@ function cancelBtn() {
     maskBox.style.display = "none";
 }
 
-function confirmBtn(event) {
-    //alert();
+var yesBtn = document.getElementById("yes");
+var deleteBtn = document.getElementsByClassName("delete-btn");
+
+function confirmsBtn(event) {
+    for (i = 0; i < event.length; i++) {
+        var deleteBtnNow = deleteBtn[i];
+        deleteBtnNow.addEventListener("click", function(e) {
+            var targetBtn = e.target;
+            yesBtn.addEventListener("click", function() {
+                listBody.removeChild(targetBtn.parentNode.parentNode);
+            });
+        });
+    }
 }
 
 
@@ -82,7 +93,7 @@ function getItemData() {
         success: function(res) {
             updataList(res);
             colorCheck(res);
-            confirmBtn(res);
+            confirmsBtn(res);
         },
         fail: function(error) {
             console.log('error occurred')
